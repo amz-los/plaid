@@ -24,7 +24,8 @@ class Plaid
         'upgrade' => Services\Upgrade::class,
         'categories' => Services\Categories::class,
         'institutions' => Services\Institutions::class,
-        'exchange' => Services\Exchange::class
+        'exchange' => Services\Exchange::class,
+        'transactions' => Services\Transactions::class
     ];
 
     /**

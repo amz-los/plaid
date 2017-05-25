@@ -2,6 +2,8 @@
 
 namespace OldTimeGuitarGuy\Plaid\Services;
 
+use OldTimeGuitarGuy\Plaid\Contracts\User;
+
 /**
  * The /auth endpoint allows you to collect a user's bank account and
  * routing number, along with basic account data and balances. The
@@ -25,7 +27,7 @@ class Transactions extends Base\Service
      */
     public function endpoint($path = null)
     {
-        return $this->path('transactions', $path);
+        return $this->path('transactions/get', $path);
     }
 
     /**
@@ -35,9 +37,12 @@ class Transactions extends Base\Service
      * @param $end_date
      * @return \OldTimeGuitarGuy\Plaid\Contracts\Http\Response
      */
-    public function get($start_date, $end_date)
+    public function get(User $user, $start_date, $end_date)
     {
-        return $this->request->post($this->endpoint(),[
+        var_dump($start_date);
+        
+        return $this->request->post($this->endpoint(), [
+            'access_token' => $user->accessToken(),
             'start_date' => $start_date,
             'end_date' => $end_date
         ]);
