@@ -14,7 +14,7 @@ namespace OldTimeGuitarGuy\Plaid\Services;
  *
  * https://plaid.com/docs/api/#auth
  */
-class Exchange extends Base\Service
+class Transactions extends Base\Service
 {
     /**
      * Get the main endpoint for this service
@@ -25,7 +25,7 @@ class Exchange extends Base\Service
      */
     public function endpoint($path = null)
     {
-        return $this->path('transaction', $path);
+        return $this->path('transactions', $path);
     }
 
     /**
