@@ -56,11 +56,11 @@ class Request implements RequestContract
     public function post($endpoint, array $parameters = [])
     {
         if ( isset($parameters['options']) ) {
-            $parameters['options'] = json_encode($parameters['options']);
+            $parameters['options'] = (object)($parameters['options']);
         }
 
         $options = [
-            'form_params' => array_merge(
+            'json' => array_merge(
                 $this->credentials,
                 $parameters
             ),
@@ -80,7 +80,7 @@ class Request implements RequestContract
     public function patch($endpoint, array $parameters = [])
     {
         $options = [
-            'form_params' => array_merge(
+            'json' => array_merge(
                 $this->credentials,
                 $parameters
             ),
@@ -100,7 +100,7 @@ class Request implements RequestContract
     public function delete($endpoint, array $parameters = [])
     {
         $options = [
-            'form_params' => array_merge(
+            'json' => array_merge(
                 $this->credentials,
                 $parameters
             ),
