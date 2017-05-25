@@ -39,8 +39,6 @@ class Transactions extends Base\Service
      */
     public function get(User $user, $start_date, $end_date)
     {
-        var_dump($start_date);
-        
         return $this->request->post($this->endpoint(), [
             'access_token' => $user->accessToken(),
             'start_date' => $start_date,
