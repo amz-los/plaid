@@ -38,7 +38,7 @@ class Request implements RequestContract
      * @param string $secret
      * @param string $use_production
      */
-    public function __construct(ClientInterface $http, $client_id, $secret, $use_production = false)
+    public function __construct(ClientInterface $http, $client_id, $secret, $use_production = 'sandbox')
     {
         $this->http = $http;
         $this->credentials = compact('client_id', 'secret');
@@ -171,8 +171,19 @@ class Request implements RequestContract
      */
     protected function base()
     {
-        return $this->use_production
-            ? self::PRODUCTION_URI
-            : self::DEVELOPMENT_URI;
+        switch (strtolower($this->use_production)) {
+            case 'sandbox':
+                return self::SANDBOX_URI;
+                break;
+            case 'development':
+                return self::DEVELOPMENT_URI;
+                break;
+            case 'production':
+                return self::PRODUCTION_URI;
+                break;
+            default:
+                return self::SANDBOX_URI;
+                break;
+        }
     }
 }

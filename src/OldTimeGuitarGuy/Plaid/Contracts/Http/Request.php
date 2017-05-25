@@ -4,8 +4,9 @@ namespace OldTimeGuitarGuy\Plaid\Contracts\Http;
 
 interface Request
 {
-    const DEVELOPMENT_URI = 'https://tartan.plaid.com/';
-    const PRODUCTION_URI  = 'https://api.plaid.com/';
+    const SANDBOX_URI = 'https://sandbox.plaid.com';
+    const DEVELOPMENT_URI = 'https://development.plaid.com/';
+    const PRODUCTION_URI  = 'https://production.plaid.com/';
 
     /**
      * Make a post request to Plaid
