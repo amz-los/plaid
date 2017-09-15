@@ -37,12 +37,13 @@ class Transactions extends Base\Service
      * @param $end_date
      * @return \OldTimeGuitarGuy\Plaid\Contracts\Http\Response
      */
-    public function get(User $user, $start_date, $end_date)
-    {
-        return $this->request->post($this->endpoint(), [
-            'access_token' => $user->accessToken(),
-            'start_date' => $start_date,
-            'end_date' => $end_date
-        ]);
-    }
+     public function get(User $user, $start_date, $end_date, $options)
+     {        
+         return $this->request->post($this->endpoint(), [
+             'access_token' => $user->accessToken(),
+             'start_date' => $start_date,
+             'end_date' => $end_date,
+             'options' => $options
+         ]);
+     }
 }
